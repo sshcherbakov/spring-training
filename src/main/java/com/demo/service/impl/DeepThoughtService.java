@@ -2,6 +2,7 @@ package com.demo.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.demo.model.Antwort;
 import com.demo.repository.IDeepThoughtRepository;
@@ -11,9 +12,12 @@ import com.demo.service.IDeepThoughtService;
 public class DeepThoughtService implements IDeepThoughtService {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtService.class);
 
-	private IDeepThoughtRepository deepThoughtRepository;
+	private final IDeepThoughtRepository deepThoughtRepository;
 
-	// TODO: inject a IVogonprotokollRepository in a constructor
+	@Autowired
+	public DeepThoughtService(final IDeepThoughtRepository deepThoughtRepository) {
+		this.deepThoughtRepository = deepThoughtRepository;
+	}
 
 	
 	@Override
