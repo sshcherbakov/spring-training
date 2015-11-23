@@ -36,8 +36,6 @@ public class ApplicationConfig {
 		return new VogonprotokollRepository();
 	}
 
-	// TODO Try double vogonprotokollRepository beans error and autowire by bean name 
-	
 	@Bean
 	public IVogonprotokollService vogonprotokollService() {
 		return new VogonprotokollService();

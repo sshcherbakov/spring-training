@@ -27,5 +27,5 @@ public class DeepThoughtService implements IDeepThoughtService {
 		return this.deepThoughtRepository.ermittleDieAntwort();
 		
 	}
-
+	
 }
