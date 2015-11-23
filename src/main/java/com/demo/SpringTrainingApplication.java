@@ -6,7 +6,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.demo.config.ApplicationConfig;
-import com.demo.config.DatabaseConfig;
 import com.demo.controller.DeepThoughtController;
 import com.demo.model.Antwort;
 
@@ -18,8 +17,7 @@ public class SpringTrainingApplication {
     	
     	try (ConfigurableApplicationContext context = 
     			new AnnotationConfigApplicationContext(
-    					ApplicationConfig.class,
-    					DatabaseConfig.class) ) {
+    					ApplicationConfig.class) ) {
 
     		DeepThoughtController controller = context.getBean(DeepThoughtController.class);
 	    	

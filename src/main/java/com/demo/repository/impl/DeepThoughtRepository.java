@@ -27,7 +27,7 @@ public class DeepThoughtRepository implements IDeepThoughtRepository {
 	
 	@PostConstruct
 	private void init() {
-		
+
 		this.maxId = jdbcTemplate.queryForObject(
 			"select count(*) maxId from ANTWORT", 
 			(rowMapper, rowNum) -> {
