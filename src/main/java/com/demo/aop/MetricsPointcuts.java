@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MetricsPointcuts {
 	
-	// TODO Named pointcut for reuse (see MetricsAdvice)
 	@Pointcut("execution(* (@org.springframework.stereotype.Service com.demo..*).*(..))")
 	public void serviceCalls() {
 	}

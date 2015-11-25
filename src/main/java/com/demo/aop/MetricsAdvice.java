@@ -14,8 +14,7 @@ import org.springframework.util.StopWatch;
 @Component
 public class MetricsAdvice {
 	private static Logger log = LoggerFactory.getLogger(MetricsAdvice.class);
-	
-	// TODO Around advice to add cross-cutting concern
+
 	
 	@Around("com.demo.aop.MetricsPointcuts.serviceCalls()")
 	public Object metrics(ProceedingJoinPoint point)  throws Throwable {

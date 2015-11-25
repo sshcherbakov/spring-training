@@ -11,7 +11,7 @@ import com.demo.utils.LoggingBeanPostProcessor;
 import com.demo.utils.LoggingSmartLifecycle;
 
 @Profile("debug")
-@EnableAspectJAutoProxy		// <-- enables @Aspect annotations processing
+@EnableAspectJAutoProxy
 @Configuration
 public class DebugConfig {
 	
@@ -29,8 +29,6 @@ public class DebugConfig {
 	public LoggingSmartLifecycle loggingSmartLifecycle() {
 		return new LoggingSmartLifecycle();
 	}
-	
-	// TODO: Alternative way of manual proxy creation (independent from @EnableAspectJAutoProxy)
 	
 	@Bean
 	public BeanNameAutoProxyCreator loggingProxyFactory() {

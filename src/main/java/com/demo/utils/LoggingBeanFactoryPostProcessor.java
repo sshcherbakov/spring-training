@@ -13,7 +13,6 @@ public class LoggingBeanFactoryPostProcessor implements BeanFactoryPostProcessor
 
 	@Override
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-		// TODO Analyze the BeanFactoryPostProcessor at runtime
 		
     	BeanDefinitionRegistry beanRegistry = (BeanDefinitionRegistry) beanFactory;
 
