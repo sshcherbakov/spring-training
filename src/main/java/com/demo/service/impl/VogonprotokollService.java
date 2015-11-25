@@ -3,11 +3,12 @@ package com.demo.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.demo.repository.IVogonprotokollRepository;
 import com.demo.service.IVogonprotokollService;
 
-
+@Service
 public class VogonprotokollService implements IVogonprotokollService {
 	private static Logger log = LoggerFactory.getLogger(VogonprotokollService.class);
 
