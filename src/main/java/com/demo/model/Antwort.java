@@ -1,39 +1,37 @@
 package com.demo.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
-/**
- *
- * @author Tobias Wolf
- */
-public class Antwort {
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
-	private String anfragesteller;
+@Entity(name="ANTWORT")
+public class Antwort extends AbstractPersistable<Integer> {
+
+	private static final long serialVersionUID = 1L;
+	
+	private transient String anfragesteller;
+	
+	@Column(name="val")
 	private String antwort;
 
+	
 	public Antwort() {
-
+		this(null);
 	}
 
-	public Antwort(final String string) {
-		antwort = string;
+	public Antwort(Integer id) {
+		this.setId(id);
 	}
 
-	@Override
-	public boolean equals(final Object other) {
-		final Antwort otherAntwort = (Antwort) other;
-		return (otherAntwort.getAntwort().equals(this.getAntwort()) && (otherAntwort.getAnfragesteller().equals(this.getAnfragesteller())));
-	}
-
-	@Override
-	public int hashCode() {
-		return this.getAntwort().hashCode() + this.getAnfragesteller().hashCode() + 42;
-	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "Hallo " + this.getAnfragesteller() + ", die Antwort ist: " + this.getAntwort();
 	}
 
+	
 	public String getAntwort() {
 		return antwort;
 	}

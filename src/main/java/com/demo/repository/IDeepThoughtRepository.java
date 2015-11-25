@@ -1,9 +1,12 @@
 package com.demo.repository;
 
+import org.springframework.data.repository.Repository;
+
 import com.demo.model.Antwort;
 
-public interface IDeepThoughtRepository {
+public interface IDeepThoughtRepository extends Repository<Antwort, Integer> {
 
-	Antwort ermittleDieAntwort();
-	
+
+	Antwort findOne(Integer id);
+
 }

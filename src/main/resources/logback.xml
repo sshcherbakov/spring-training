@@ -11,6 +11,7 @@
 	
 	<logger name="org.springframework" level="info" />
 	<logger name="com.demo" level="debug" />
+	<logger name="org.springframework.jdbc" level="debug" />
 	
 	<root level="info">
 		<appender-ref ref="STDOUT" />

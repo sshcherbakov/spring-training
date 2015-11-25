@@ -1,5 +1,6 @@
 package com.demo.service.impl;
 
+import java.util.List;
 import java.util.Random;
 
 import org.slf4j.Logger;
@@ -18,26 +19,22 @@ public class IdService implements IIdService, SmartLifecycle {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	private int maxId = 0;
+	private List<Integer> ids;
 
 	private boolean isRunning = false;
 	
 	
 	@Override
 	public int getRandomId() {
-		return new Random().nextInt(maxId) + 1;
+		return ids.get(new Random().nextInt(ids.size()));
 	}
 
 	
 	@Override
 	public void start() {
-		this.maxId = jdbcTemplate.queryForObject(
-				"select count(*) from ANTWORT", 
-				(rowMapper, rowNum) -> {
-					return rowMapper.getInt(1);
-				}
-			);
-		log.debug("start(): maxId={}", maxId);
+		this.ids = jdbcTemplate.queryForList(
+				"select id from antwort", Integer.class);
+		log.info("start(): ids={}", ids);
 		isRunning = true;
 	}
 
