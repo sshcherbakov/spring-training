@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MetricsPointcuts {
 	
-	@Pointcut("execution(* (@org.springframework.stereotype.Service com.demo..*).*(..))")
+	@Pointcut("execution(public * (@org.springframework.stereotype.Service com.demo..*).*(..))")
 	public void serviceCalls() {
 	}
 	
