@@ -6,24 +6,23 @@ import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
 import com.demo.model.Antwort;
 import com.demo.repository.IDeepThoughtRepository;
 
 
-@Repository
 public class DeepThoughtRepository implements IDeepThoughtRepository {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtRepository.class);
 
 
-	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
 	private int maxId = 0;
-	
+
+	public DeepThoughtRepository(final JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
 	
 	@PostConstruct
 	private void init() {

@@ -27,8 +27,8 @@ public class ApplicationConfig {
 	}
 	
 	@Bean
-	public IDeepThoughtRepository deepThoughtRepository() {
-		return new DeepThoughtRepository();
+	public IDeepThoughtRepository deepThoughtRepository(JdbcTemplate jdbcTemplate) {
+		return new DeepThoughtRepository(jdbcTemplate);
 	}
 	
 	@Bean
