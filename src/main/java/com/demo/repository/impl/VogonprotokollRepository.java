@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.demo.repository.IVogonprotokollRepository;
 
-@Repository
 public class VogonprotokollRepository implements IVogonprotokollRepository {
 	private static Logger log = LoggerFactory.getLogger(VogonprotokollRepository.class);
 
