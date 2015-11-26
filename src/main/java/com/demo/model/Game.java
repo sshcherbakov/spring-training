@@ -10,12 +10,15 @@ import javax.persistence.OneToMany;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Game extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@JsonManagedReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="game")
 	private List<Position> positions = new ArrayList<>();
 
 	public Game() {

@@ -1,7 +1,5 @@
 package com.demo.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,12 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.model.Game;
 import com.demo.model.Move;
+import com.demo.service.GameException;
 import com.demo.service.GameService;
 
 @RestController
 @RequestMapping("/games")
 public class GamesController {
-	private static Logger log = LoggerFactory.getLogger(GamesController.class);
 	
 	@Autowired
 	private GameService gameService;
@@ -44,10 +42,14 @@ public class GamesController {
 	
 	
 	@RequestMapping(value="{gameId}", method=RequestMethod.POST)
-	public Game moveUp(
+	public Game moveJoin(
 			@PathVariable("gameId") long gameId, 
 			@RequestParam("p") String playerName,
-			@RequestParam("m") Move move ) {
+			@RequestParam(name="m", required=false) Move move ) {
+		
+		if( move == null ) {
+			return gameService.joinGame(gameId, playerName);
+		}
 		
 		switch(move) {
 		case UP:
@@ -59,7 +61,7 @@ public class GamesController {
 		case LEFT:
 			return gameService.moveLeft(gameId, playerName);
 		default:
-			throw new IllegalStateException("Illegal move");
+			throw new GameException("Unknown move");
 		}
 
 	}
