@@ -1,29 +1,24 @@
 package com.demo;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.demo.config.ApplicationConfig;
-import com.demo.config.DatabaseConfig;
-import com.demo.controller.DeepThoughtController;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ApplicationConfig.class, DatabaseConfig.class } )
+// TODO: Add Spring JUnit runner
+// TODO: reference configurations for the test
+// TODO: list SQL files to be loaded
 public class ApplicationTests {
 	private static Logger log = LoggerFactory.getLogger(ApplicationTests.class);
 	
-	@Autowired
-	private DeepThoughtController controller;
+	// TODO: Copy the DatabaseConfig configuration to the nested class here 
+	// and override the database contents for the test  
 	
+
+	// TODO autowire DeepThoughtController into the unit test
 	@Test
 	public void contextLoads() {
 		log.info("TEST");
 		
-		controller.ermittleDieAntwort();
+		// TODO: compare DeepThoughtController answer with "Test"
 	}
 
 }

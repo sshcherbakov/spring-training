@@ -22,26 +22,26 @@ public class DeepThoughtRepository implements IDeepThoughtRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	private int maxId = 0;
+	private int maxId = 1;
 	
 	
-	@PostConstruct
-	private void init() {
-		
-		this.maxId = jdbcTemplate.queryForObject(
-			"select count(*) maxId from ANTWORT", 
-			(rowMapper, rowNum) -> {
-				return rowMapper.getInt(1);
-			}
-		);
-	}
+//	@PostConstruct
+//	private void init() {
+//		
+//		this.maxId = jdbcTemplate.queryForObject(
+//			"select count(*) maxId from antwort", 
+//			(rowMapper, rowNum) -> {
+//				return rowMapper.getInt(1);
+//			}
+//		);
+//	}
 
 	@Override
 	public Antwort ermittleDieAntwort() {
 		log.debug("ermittleDieAntwort()");
 
 		 return jdbcTemplate.queryForObject(
-			"select val from ANTWORT where id = " + getRandomId(), 
+			"select val from antwort where id = " + getRandomId(), 
 			(rowMapper, rowNum) -> {
 				return new Antwort(rowMapper.getString("val"));
 			}
