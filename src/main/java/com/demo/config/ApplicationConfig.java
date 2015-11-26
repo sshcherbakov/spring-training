@@ -42,6 +42,7 @@ public class ApplicationConfig {
 	}
 
 	// TODO Try double vogonprotokollRepository beans error and autowire by bean name 
+	// TODO Demo @Primary and @Qulifier annotation
 	
 	@Bean
 	public IVogonprotokollService vogonprotokollService() {
