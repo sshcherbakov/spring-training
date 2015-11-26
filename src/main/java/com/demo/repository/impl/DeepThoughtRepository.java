@@ -15,17 +15,16 @@ import com.demo.repository.IDeepThoughtRepository;
 public class DeepThoughtRepository implements IDeepThoughtRepository {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtRepository.class);
 
-
-	@Value("${spring.application.name}")
-	private String applicationName;
+	// TODO: initialize field from external property spring.application.name  
+	private String applicationName = "spring-training";
 	
-	@Value("${spring.application.index}")
-	private String applicationIndex;
+	// TODO: initialize field from external property spring.application.index  
+	private String applicationIndex = "0";
 	
-	
-	@Value("${max.id:4}")
+	// TODO: initialize field from external property max.id  
 	private int maxId = 4;
 
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 		
