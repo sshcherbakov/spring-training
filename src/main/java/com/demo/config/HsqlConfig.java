@@ -16,8 +16,8 @@ public class HsqlConfig {
 	public DataSource dataSource() {
 		return new EmbeddedDatabaseBuilder()
 			.setType(EmbeddedDatabaseType.HSQL)
-			.addScript("db/sql/create-db.sql")
-			.addScript("db/sql/init-db.sql")
+			.addScript("schema.sql")
+			.addScript("data.sql")
 			.build();
 	}
 
