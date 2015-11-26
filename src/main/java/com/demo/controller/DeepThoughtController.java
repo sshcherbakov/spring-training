@@ -4,13 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Controller;
 
+import com.demo.model.Antwort;
 import com.demo.service.IDeepThoughtService;
 import com.demo.service.IVogonprotokollService;
-import com.demo.model.Antwort;
 
-@Controller
+//TODO: Add @Controller
 public class DeepThoughtController {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtController.class);
 	

@@ -10,7 +10,7 @@ import com.demo.repository.IDeepThoughtRepository;
 import com.demo.service.IDeepThoughtService;
 
 
-@Service
+//TODO: Add @Service
 public class DeepThoughtService implements IDeepThoughtService {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtService.class);
 

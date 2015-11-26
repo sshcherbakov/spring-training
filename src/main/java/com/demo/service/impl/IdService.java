@@ -7,11 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.SmartLifecycle;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
 
 import com.demo.service.IIdService;
 
-@Service
+// TODO: Add @Service
 public class IdService implements IIdService, SmartLifecycle {
 	private static Logger log = LoggerFactory.getLogger(IdService.class);
 

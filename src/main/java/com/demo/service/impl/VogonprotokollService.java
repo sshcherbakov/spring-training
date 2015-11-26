@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.demo.repository.IVogonprotokollRepository;
 import com.demo.service.IVogonprotokollService;
 
-@Service
+//TODO: Add @Service
 public class VogonprotokollService implements IVogonprotokollService {
 	private static Logger log = LoggerFactory.getLogger(VogonprotokollService.class);
 
