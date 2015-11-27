@@ -71,6 +71,7 @@
 
 		<!-- Caching -->
 		<!-- TODO: The following dependencies are optional to switch to using Guava cache implementation -->
+		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
@@ -79,6 +80,16 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
         </dependency>
+        -->
+		<!-- TODO: The following dependencies are to enable Gemfire based caching -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-gemfire</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
 
 		<!-- Cloud -->
 		<dependency>

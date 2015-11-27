@@ -20,7 +20,7 @@ import com.demo.game.service.api.GameService;
 @Service
 @Monitored
 @Transactional
-@CacheConfig(cacheNames="games")
+@CacheConfig(cacheManager="cacheManager", cacheNames="games")
 public class GameServiceImpl implements GameService {
 
 	private static final String DEFAULT_POSITION = "e4";
