@@ -1,30 +1,27 @@
 package com.demo.messaging;
 
-import java.io.File;
-
-import javax.annotation.PreDestroy;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.jms.annotation.JmsListener;
+import org.springframework.amqp.rabbit.annotation.Exchange;
+import org.springframework.amqp.rabbit.annotation.Queue;
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import org.springframework.util.FileSystemUtils;
 
+@Profile({ "cloud", "rabbit" })
 @Component
 public class AmqpMetricsReceiver {
 	private static Logger log = LoggerFactory.getLogger(AmqpMetricsReceiver.class);
 
-	public final static String METRICS_DESTINATION = "metrics-destination"; 
 	
-    @JmsListener(destination = METRICS_DESTINATION)
+    @RabbitListener(exclusive=true, bindings={
+    @QueueBinding(
+	    		exchange=@Exchange("metrics"),
+	    		value=@Queue(exclusive="true"))
+    })
     public void receiveMessage(String message) {
     	log.debug("Received <{}>", message);
-    }
-
-    
-    @PreDestroy
-    public void cleanup() {
-        FileSystemUtils.deleteRecursively(new File("activemq-data"));
     }
     
 }

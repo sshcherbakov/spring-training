@@ -1,18 +1,31 @@
 package com.demo.config;
 
-import org.aspectj.lang.Aspects;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 
-import com.demo.aop.MetricsAspect;
+import com.demo.messaging.MessageSender;
+
+
+@ConditionalOnMissingBean({ RabbitTemplate.class })
+@Profile("!cloud")
 
 //TODO: Enable JMS here for the @JmsListener endpoint to be recognized and for 
 //the Spring Boot to start the embedded ActiveMQ
 @EnableJms
 @Configuration
 public class JmsConfig {
+
+	public final static String METRICS_DESTINATION = "metrics-destination"; 
 
 // TODO: Optional JMS connectionFactory customization 
 //		(a connection factory is provided by Spring Boot by default)
@@ -23,17 +36,18 @@ public class JmsConfig {
 //	return factory;
 //}
 
-	// TODO: Autowire MetricsAdvice with JmsTemplate
+
 	@Bean
-	public MetricsAspect metricsAdvice(JmsTemplate jmsTemplate) {
-		if( Aspects.hasAspect(MetricsAspect.class)) {
-			return Aspects.aspectOf(MetricsAspect.class);
-		}
-		else { 	// for JUnit tests only
-			MetricsAspect metricsAdvice = new MetricsAspect();
-			metricsAdvice.setJmsTemplate(jmsTemplate);
-			return metricsAdvice;
-		}
+	public MessageSender jmsMessageSender(JmsTemplate jmsTemplate) {
+		return s -> { 
+			jmsTemplate.send(METRICS_DESTINATION,
+					new MessageCreator() {
+						@Override
+						public Message createMessage(Session session) throws JMSException {
+							return session.createTextMessage(s);
+						}
+					});
+		};
 	}
 
 }
