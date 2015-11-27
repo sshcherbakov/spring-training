@@ -69,6 +69,17 @@
             <artifactId>activemq-broker</artifactId>
         </dependency>
 
+		<!-- Caching -->
+		<!-- TODO: The following dependencies are optional to switch to using Guava cache implementation -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+	    <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
 		<!-- Cloud -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

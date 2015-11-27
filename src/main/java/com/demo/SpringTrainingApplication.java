@@ -3,6 +3,7 @@ package com.demo;
 import org.aspectj.lang.Aspects;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.core.JmsTemplate;
@@ -13,6 +14,8 @@ import com.demo.aop.MetricsAspect;
 // TODO: Enable JMS here for the @JmsListener endpoint to be recognized and for 
 // the Spring Boot to start the embedded Artemis 
 @EnableJms
+// TODO: Enable caching annotations processing
+@EnableCaching
 @SpringBootApplication
 public class SpringTrainingApplication {
 
