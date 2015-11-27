@@ -11,8 +11,9 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(uniqueConstraints=
-	@UniqueConstraint(columnNames = {"game_id", "player"}))
+@Table(
+	name="t_position",
+	uniqueConstraints=@UniqueConstraint(columnNames = {"game_id", "player"}))
 public class Position extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 1L;

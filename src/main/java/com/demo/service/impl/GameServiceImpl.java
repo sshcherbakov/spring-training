@@ -1,5 +1,7 @@
 package com.demo.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +12,8 @@ import com.demo.repository.PositionRepository;
 import com.demo.service.GameException;
 import com.demo.service.GameService;
 
-
 @Service
+@Transactional
 public class GameServiceImpl implements GameService {
 
 	private static final String DEFAULT_POSITION = "e4";

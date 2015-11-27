@@ -7,12 +7,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
+@Table(name="t_game")
 public class Game extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 1L;
