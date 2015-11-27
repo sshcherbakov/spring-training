@@ -13,7 +13,7 @@ public class DeepThoughtService implements IDeepThoughtService {
 
 	private IDeepThoughtRepository deepThoughtRepository;
 
-	// TODO: inject a IVogonprotokollRepository in a constructor
+	// TODO: inject a IDeepThoughtService in a constructor
 
 	
 	@Override
