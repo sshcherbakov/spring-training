@@ -1,4 +1,4 @@
-package com.demo.controller;
+package com.demo.game.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.model.Game;
-import com.demo.model.Move;
-import com.demo.service.GameException;
-import com.demo.service.GameService;
+import com.demo.game.model.Game;
+import com.demo.game.model.Move;
+import com.demo.game.service.api.GameException;
+import com.demo.game.service.api.GameService;
 
 @RestController
 @RequestMapping("/games")

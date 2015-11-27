@@ -1,6 +1,6 @@
-package com.demo.service;
+package com.demo.game.service.api;
 
-import com.demo.model.Game;
+import com.demo.game.model.Game;
 
 public interface GameService {
 

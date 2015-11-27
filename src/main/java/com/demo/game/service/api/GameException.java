@@ -1,4 +1,4 @@
-package com.demo.service;
+package com.demo.game.service.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

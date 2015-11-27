@@ -1,16 +1,16 @@
-package com.demo.service.impl;
+package com.demo.game.service.internal;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.model.Game;
-import com.demo.model.Position;
-import com.demo.repository.GameRepository;
-import com.demo.repository.PositionRepository;
-import com.demo.service.GameException;
-import com.demo.service.GameService;
+import com.demo.game.model.Game;
+import com.demo.game.model.Position;
+import com.demo.game.repository.GameRepository;
+import com.demo.game.repository.PositionRepository;
+import com.demo.game.service.api.GameException;
+import com.demo.game.service.api.GameService;
 
 @Service
 @Transactional
