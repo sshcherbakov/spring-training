@@ -59,6 +59,16 @@
 			<artifactId>h2</artifactId>
 		</dependency>
 
+		<!-- Messaging -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-broker</artifactId>
+        </dependency>
+
 		<!-- Cloud -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

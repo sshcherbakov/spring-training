@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.demo.aop.Monitored;
 import com.demo.game.model.Game;
 import com.demo.game.model.Position;
 import com.demo.game.repository.GameRepository;
@@ -14,6 +15,7 @@ import com.demo.game.service.api.GameService;
 
 @Service
 @Transactional
+@Monitored
 public class GameServiceImpl implements GameService {
 
 	private static final String DEFAULT_POSITION = "e4";
@@ -31,7 +33,7 @@ public class GameServiceImpl implements GameService {
 		this.positionRepository = positionRepository;
 	}
 
-	
+	@Monitored
 	@Override
 	public Iterable<Game> listGames() {
 		

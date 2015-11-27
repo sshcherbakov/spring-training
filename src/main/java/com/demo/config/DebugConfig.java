@@ -39,5 +39,5 @@ public class DebugConfig {
 		
 		return factory;
 	}
-		
+	
 }

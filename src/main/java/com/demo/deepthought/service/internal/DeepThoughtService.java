@@ -13,6 +13,7 @@ import org.springframework.context.SmartLifecycle;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.demo.aop.Monitored;
 import com.demo.deepthought.model.Antwort;
 import com.demo.deepthought.repository.IDeepThoughtRepository;
 import com.demo.deepthought.service.api.IDeepThoughtService;
@@ -39,6 +40,7 @@ public class DeepThoughtService implements IDeepThoughtService, SmartLifecycle {
 	}
 
 	
+	@Monitored
 	@Override
 	public Antwort ermittleDieAntwort() {
 		log.debug("ermittleDieAntwort()");

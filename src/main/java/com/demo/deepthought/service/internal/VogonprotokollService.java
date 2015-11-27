@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.demo.aop.Monitored;
 import com.demo.deepthought.model.Antwort;
 import com.demo.deepthought.repository.IVogonprotokollRepository;
 import com.demo.deepthought.service.api.IVogonprotokollService;
@@ -17,6 +18,7 @@ public class VogonprotokollService implements IVogonprotokollService {
 	private IVogonprotokollRepository myVogonprotokollRepository;
 
 
+	@Monitored
 	@Override
 	public void schreibeSitzungsprotokoll(Long id) {
 		log.debug("schreibeSitzungsprotokoll()");

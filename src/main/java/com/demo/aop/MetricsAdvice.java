@@ -1,20 +1,29 @@
 package com.demo.aop;
 
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.util.StopWatch;
 
+import com.demo.messaging.MetricsReceiver;
+
 @Aspect
-@Profile("debug")
-@Component
 public class MetricsAdvice {
 	private static Logger log = LoggerFactory.getLogger(MetricsAdvice.class);
 
+	
+	@Autowired
+	private JmsTemplate jmsTemplate;
+	
 	
 	@Around("com.demo.aop.MetricsPointcuts.serviceCalls()")
 	public Object metrics(ProceedingJoinPoint point)  throws Throwable {
@@ -23,13 +32,27 @@ public class MetricsAdvice {
 		final Object value;
 		try {
 			timer.start(point.toShortString());
-			value = point.proceed();
+			value = point.proceed();			
 		    return value;
 		}
 		finally {
 			timer.stop();
-			log.debug(timer.prettyPrint());
+			log.trace(timer.prettyPrint());
+			
+			jmsTemplate.send(MetricsReceiver.METRICS_DESTINATION,
+					new MessageCreator() {
+						@Override
+						public Message createMessage(Session session) throws JMSException {
+							return session.createTextMessage(timer.shortSummary());
+						}
+					});
+
 		}
+		
+	}
+	
+	public void setJmsTemplate(JmsTemplate jmsTemplate) {
+		this.jmsTemplate = jmsTemplate;
 	}
 	
 }
