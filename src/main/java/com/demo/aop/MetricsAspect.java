@@ -17,8 +17,8 @@ import org.springframework.util.StopWatch;
 import com.demo.messaging.MetricsReceiver;
 
 @Aspect
-public class MetricsAdvice {
-	private static Logger log = LoggerFactory.getLogger(MetricsAdvice.class);
+public class MetricsAspect {
+	private static Logger log = LoggerFactory.getLogger(MetricsAspect.class);
 
 	
 	@Autowired
@@ -51,6 +51,7 @@ public class MetricsAdvice {
 		
 	}
 	
+	// Setter for construction from JUnit tests
 	public void setJmsTemplate(JmsTemplate jmsTemplate) {
 		this.jmsTemplate = jmsTemplate;
 	}

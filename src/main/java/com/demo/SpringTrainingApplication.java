@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.core.JmsTemplate;
 
-import com.demo.aop.MetricsAdvice;
+import com.demo.aop.MetricsAspect;
 
 
 // TODO: Enable JMS here for the @JmsListener endpoint to be recognized and for 
@@ -28,12 +28,12 @@ public class SpringTrainingApplication {
 	
 	// TODO: Autowire MetricsAdvice with JmsTemplate
 	@Bean
-	public MetricsAdvice metricsAdvice(JmsTemplate jmsTemplate) {
-		if( Aspects.hasAspect(MetricsAdvice.class)) {
-			return Aspects.aspectOf(MetricsAdvice.class);
+	public MetricsAspect metricsAdvice(JmsTemplate jmsTemplate) {
+		if( Aspects.hasAspect(MetricsAspect.class)) {
+			return Aspects.aspectOf(MetricsAspect.class);
 		}
 		else { 	// for JUnit tests only
-			MetricsAdvice metricsAdvice = new MetricsAdvice();
+			MetricsAspect metricsAdvice = new MetricsAspect();
 			metricsAdvice.setJmsTemplate(jmsTemplate);
 			return metricsAdvice;
 		}
