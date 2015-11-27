@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>spring-training</title>
+</head>
+<body>
+<h3>Games</h3>
+
+<script src="scripts/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" >
+$.ajax({
+    url: '/games',
+    type: 'GET',
+    data: 'p=user', 
+    success: function( data ) { 
+		var items = [];
+		$.each(data, function(key, val) {
+			items.push("<li id='g" + val.id + "'><a href='/games/"+ val.id +"'>/games/" + val.id + "</a></li>");
+		});
+	
+		$("<ul/>", {
+			"class" : "my-new-list",
+			html : items.join("")
+		}).appendTo("body");
+
+	}
+});
+</script>
+</body>
+</html>
