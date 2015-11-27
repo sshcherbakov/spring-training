@@ -14,7 +14,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.util.StopWatch;
 
-import com.demo.messaging.MetricsReceiver;
+import com.demo.messaging.JmsMetricsReceiver;
 
 @Aspect
 public class MetricsAspect {
@@ -39,7 +39,7 @@ public class MetricsAspect {
 			timer.stop();
 			log.trace(timer.prettyPrint());
 			
-			jmsTemplate.send(MetricsReceiver.METRICS_DESTINATION,
+			jmsTemplate.send(JmsMetricsReceiver.METRICS_DESTINATION,
 					new MessageCreator() {
 						@Override
 						public Message createMessage(Session session) throws JMSException {

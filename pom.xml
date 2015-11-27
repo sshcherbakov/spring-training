@@ -81,16 +81,21 @@
             <artifactId>guava</artifactId>
         </dependency>
         -->
-		<!-- TODO: The following dependencies are to enable Gemfire based caching -->
+		<!-- TODO: The following is to enable Gemfire based caching -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-gemfire</artifactId>
+		</dependency>
+		<dependency>	<!-- To suppress exception on Gemfire startup -->
+			<groupId>org.springframework.shell</groupId>
+			<artifactId>spring-shell</artifactId>
+			<version>1.1.0.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
-
+		
 		<!-- Cloud -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

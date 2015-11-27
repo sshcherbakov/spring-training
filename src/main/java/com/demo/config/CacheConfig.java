@@ -1,6 +1,5 @@
 package com.demo.config;
 
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.gemfire.CacheFactoryBean;
@@ -10,7 +9,6 @@ import org.springframework.data.gemfire.support.GemfireCacheManager;
 
 import com.gemstone.gemfire.cache.Cache;
 
-@EnableCaching
 @EnableGemfireRepositories
 @Configuration
 public class CacheConfig {

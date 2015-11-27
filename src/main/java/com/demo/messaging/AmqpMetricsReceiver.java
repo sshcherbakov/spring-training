@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.FileSystemUtils;
 
 @Component
-public class MetricsReceiver {
-	private static Logger log = LoggerFactory.getLogger(MetricsReceiver.class);
+public class AmqpMetricsReceiver {
+	private static Logger log = LoggerFactory.getLogger(AmqpMetricsReceiver.class);
 
 	public final static String METRICS_DESTINATION = "metrics-destination"; 
 	
