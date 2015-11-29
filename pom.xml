@@ -25,7 +25,7 @@
 
 	<dependencies>
 		
-		<!-- TODO: uncomment this dependency -->
+		<!-- TODO: 0. uncomment this dependency -->
 		<!-- 
 		<dependency>
 			<groupId>org.springframework</groupId>

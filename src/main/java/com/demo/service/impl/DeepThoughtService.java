@@ -13,7 +13,7 @@ public class DeepThoughtService implements IDeepThoughtService {
 
 	private IDeepThoughtRepository deepThoughtRepository;
 
-	// TODO: 3. Inject a IDeepThoughtService via constructor
+	// TODO: 3. Inject a IDeepThoughtRepository via constructor
 	
 	@Override
 	public Antwort ermittleDieAntwort() {
