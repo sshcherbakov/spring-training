@@ -2,23 +2,47 @@ package com.demo;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.test.context.jdbc.Sql;
 
-// TODO: Add Spring JUnit runner
-// TODO: reference configurations for the test
-// TODO: list SQL files to be loaded
+import com.demo.controller.DeepThoughtController;
+
+// TODO: 1. Run the unit test with SpringJUnit4ClassRunner
+// TODO: 2. Reference application context configurations for the test
+// TODO: 6. list SQL files to be loaded using @Sql
+// @Sql("schema.sql")
 public class ApplicationTests {
 	private static Logger log = LoggerFactory.getLogger(ApplicationTests.class);
 	
-	// TODO: Copy the DatabaseConfig configuration to the nested class here 
+	// TODO: 3. Copy the DatabaseConfig configuration to the nested class here 
 	// and override the database contents for the test  
-	
+	// @Configuration
+	//public static class TestDatabaseConfig {
 
-	// TODO autowire DeepThoughtController into the unit test
+
+	// TODO: 4. Autowire DeepThoughtController into the unit test
+	private DeepThoughtController controller;
+	
+	
+	@Sql(scripts={"schema.sql", "ApplicationTests.sql"})
 	@Test
-	public void contextLoads() {
-		log.info("TEST");
+	public void testErmittleDieAntwort() {
+		log.info("testErmittleDieAntwort()");
 		
-		// TODO: compare DeepThoughtController answer with "Test"
+		// TODO: 5. compare DeepThoughtController answer with "Test"
+		// assertEquals("Wrong Test", controller.ermittleDieAntwort().getAntwort());
+	}
+
+
+	// TODO: 7. Rely on not dirtying the context
+	// @DirtiesContext
+	// @Sql("schema.sql")
+	//@Sql
+	//@Test
+	public void testErmittleDieAntwort2() {
+		log.info("testErmittleDieAntwort2()");
+		
+		// TODO: 5. compare DeepThoughtController answer with "Test"
+		//assertEquals("Test", controller.ermittleDieAntwort().getAntwort());
 	}
 
 }
