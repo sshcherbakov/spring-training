@@ -1,12 +1,8 @@
 package com.demo.config;
 
-import java.io.IOException;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.io.ClassPathResource;
 
 import com.demo.controller.DeepThoughtController;
 import com.demo.repository.IDeepThoughtRepository;
@@ -25,22 +21,24 @@ import com.demo.service.impl.VogonprotokollService;
 	HsqlConfig.class
 })
 public class ApplicationConfig {
-
-	// TODO: Without Spring Boot the PropertySourcesPlaceholderConfigurer is needed for placeholder resolution in @Value
-	// TODO: Note static modifier! Required for BeanFactoryPostProcessor beans 
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() 
-			throws IOException {
-		
-		PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer 
-			= new PropertySourcesPlaceholderConfigurer();
 	
-        propertySourcesPlaceholderConfigurer.setIgnoreUnresolvablePlaceholders(true);
-        propertySourcesPlaceholderConfigurer.setLocations(
-        		new ClassPathResource("application.properties"));
-        		
-		return propertySourcesPlaceholderConfigurer;
-	}
+	// TODO: 3. Add application properties to the "src/main/resources/application.properties" 
+	// TODO: 4. Uncomment the PropertySourcesPlaceholderConfigurer bean for the property placeholders 
+	//       to work in the @Value annotations. 
+	// 		 Note the static modifier! Required for BeanFactoryPostProcessor beans 
+//	@Bean
+//	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() 
+//			throws IOException {
+//		
+//		PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer 
+//			= new PropertySourcesPlaceholderConfigurer();
+//	
+//        propertySourcesPlaceholderConfigurer.setIgnoreUnresolvablePlaceholders(true);
+//               propertySourcesPlaceholderConfigurer.setLocations(
+//        		new ClassPathResource("application.properties"));
+// 
+//		return propertySourcesPlaceholderConfigurer;
+//	}
 	
 	
 	@Bean

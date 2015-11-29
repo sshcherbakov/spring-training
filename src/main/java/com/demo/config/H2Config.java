@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-// TODO: This profile gets loaded but default when not in cloud
-@Profile("!cloud")
+// TODO: 1. Make this profile gets loaded by default when not in cloud ("cloud" profile active)
+@Profile({"h2"})
 @Configuration
 public class H2Config {
 

@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-// TODO: Fix to use HSQL from the test
-@Profile("xxxxhsql")
+// TODO: 2. Fix profile name to use HSQL for the test and add profile specific property files
+@Profile("hsql")
 @Configuration
 public class HsqlConfig {
 
