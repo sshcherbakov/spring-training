@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -21,6 +23,7 @@ public class Game extends AbstractPersistable<Long> {
 
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="game")
+	@Fetch(FetchMode.JOIN)
 	private List<Position> positions = new ArrayList<>();
 
 	public Game() {

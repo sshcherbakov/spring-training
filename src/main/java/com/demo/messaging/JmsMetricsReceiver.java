@@ -24,7 +24,7 @@ public class JmsMetricsReceiver {
 	
     @JmsListener(destination = JmsConfig.METRICS_DESTINATION)
     public void receiveMessage(String message) {
-    	log.debug("Received <{}>", message);
+    	log.info("Received <{}>", message);
     }
 
     

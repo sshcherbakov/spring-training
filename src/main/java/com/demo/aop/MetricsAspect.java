@@ -31,7 +31,7 @@ public class MetricsAspect {
 		}
 		finally {
 			timer.stop();
-			log.trace(timer.prettyPrint());
+			log.info(timer.prettyPrint());
 			
 			messageSender.send(timer.shortSummary());
 

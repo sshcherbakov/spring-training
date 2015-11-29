@@ -1,7 +1,7 @@
 package com.demo.config;
 
-import org.springframework.amqp.core.AbstractExchange;
-import org.springframework.amqp.core.FanoutExchange;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,15 +15,16 @@ import com.demo.messaging.MessageSender;
 @EnableRabbit
 @Configuration
 public class AmqpConfig {
+	private static Logger log = LoggerFactory.getLogger(AmqpConfig.class);
 
 	@Value("${rabbit.exchangeName:metricsExchange}")
 	private String rabbitExchangeName = "metricsExchange";
 	
-	@Value("${rabbit.durable:true}")
-	private boolean isRabbitDurable = true;
-		
-	@Value("${rabbit.autodelete:false}")
-	private boolean isRabbitAutoDelete = false;
+//	@Value("${rabbit.durable:true}")
+//	private boolean isRabbitDurable = true;
+//		
+//	@Value("${rabbit.autodelete:false}")
+//	private boolean isRabbitAutoDelete = false;
 
 	
 //	@Bean
@@ -36,10 +37,10 @@ public class AmqpConfig {
 //		return rabbitAdmin;
 //	}
 
-	@Bean
-	public AbstractExchange testExchange() {
-	    return new FanoutExchange(rabbitExchangeName, isRabbitDurable, isRabbitAutoDelete);
-	}
+//	@Bean
+//	public AbstractExchange testExchange() {
+//	    return new FanoutExchange(rabbitExchangeName, isRabbitDurable, isRabbitAutoDelete);
+//	}
 	
 //	@Bean
 //	public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
@@ -58,7 +59,10 @@ public class AmqpConfig {
 	
 	@Bean
 	public MessageSender amqpMessageSender(RabbitTemplate rabbitTemplate) {
-		return s -> { rabbitTemplate.convertAndSend(s); };
+		return s -> {
+			log.debug("Sending {} to exchange {}", s, rabbitExchangeName);
+			rabbitTemplate.convertAndSend(rabbitExchangeName, "", s); 
+		};
 	}
 	
 }

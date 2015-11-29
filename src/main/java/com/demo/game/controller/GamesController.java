@@ -40,6 +40,11 @@ public class GamesController {
 		return gameService.getGame(gameId);
 	}
 	
+	@RequestMapping(value="{gameId}", method=RequestMethod.DELETE)
+	public void deleteGame(@PathVariable("gameId") long gameId) {
+		gameService.deleteGame(gameId);
+	}
+	
 	
 	@RequestMapping(value="{gameId}", method=RequestMethod.POST)
 	public Game moveJoin(

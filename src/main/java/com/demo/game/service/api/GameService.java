@@ -9,6 +9,7 @@ public interface GameService {
 
 	Game startGame(String playerName);
 	Game joinGame(long gameId, String playerName);
+	void deleteGame(long gameId);
 
 	Game moveUp(long gameId, String playerName);
 	Game moveDown(long gameId, String playerName);

@@ -173,4 +173,10 @@ public class GameServiceImpl implements GameService {
 		return new StringBuilder().append(hpos).append(vpos).toString();
 	}
 
+
+	@Override
+	public void deleteGame(long gameId) {
+		gameRepository.delete(gameId);
+	}
+
 }
