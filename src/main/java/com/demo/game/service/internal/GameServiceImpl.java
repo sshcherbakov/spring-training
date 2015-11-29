@@ -1,5 +1,8 @@
 package com.demo.game.service.internal;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +10,9 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.demo.aop.Monitored;
 import com.demo.game.model.Game;
@@ -179,4 +184,18 @@ public class GameServiceImpl implements GameService {
 		gameRepository.delete(gameId);
 	}
 
+	
+	@ExceptionHandler()
+	public void handleException(Exception ex, HttpServletResponse response) throws IOException {
+		response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), getStackString(ex));
+	}
+
+	private String getStackString(Exception e) {
+		StringBuilder s = new StringBuilder(e.getClass().getCanonicalName()).append(e.getMessage());
+		for (StackTraceElement ste : e.getStackTrace()) {
+			s.append("  at ").append(ste.toString()).append("\n");
+		}
+		return s.toString();
+	}
+	    
 }

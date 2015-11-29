@@ -2,39 +2,35 @@ package com.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.gemfire.CacheFactoryBean;
-import org.springframework.data.gemfire.LocalRegionFactoryBean;
+import org.springframework.context.annotation.Profile;
+import org.springframework.data.gemfire.client.ClientRegionFactoryBean;
 import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
 import org.springframework.data.gemfire.support.GemfireCacheManager;
 
+import com.demo.game.model.Game;
 import com.gemstone.gemfire.cache.Cache;
+import com.gemstone.gemfire.cache.client.ClientCache;
+import com.gemstone.gemfire.cache.client.ClientRegionShortcut;
 
+@Profile("cloud")
 @EnableGemfireRepositories
 @Configuration
 public class CacheConfig {
 
 	@Bean
-	public CacheFactoryBean cacheFactoryBean() {
-		return new CacheFactoryBean();
-	}
-
-	@Bean
-	public LocalRegionFactoryBean<Integer, Integer> localRegionFactoryBean(final Cache cache) {
-		return new LocalRegionFactoryBean<Integer, Integer>() {
-			{
-				setCache(cache);
-				setName("games");
-			}
-		};
+	public ClientRegionFactoryBean<Integer, Game> gameRegion(final ClientCache cache) {
+		ClientRegionFactoryBean<Integer, Game> regionFactory =  new ClientRegionFactoryBean<>();
+		regionFactory.setCache(cache);
+		regionFactory.setName("games");
+		regionFactory.setShortcut(ClientRegionShortcut.PROXY);
+		return regionFactory;
 	}
 	    
 	@Bean
 	public GemfireCacheManager cacheManager(final Cache gemfireCache) {
-		return new GemfireCacheManager() {
-			{
-				setCache(gemfireCache);
-			}
-		};
+		GemfireCacheManager cacheMgr =  new GemfireCacheManager();
+		cacheMgr.setCache(gemfireCache);
+		return cacheMgr;
 	}
 
 }
