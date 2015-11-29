@@ -11,7 +11,7 @@ public class SpringTrainingApplication {
 
     public static void main(String[] args) {
 
-    	// TODO: Initialize Spring ApplicationContext and call DeepThoughtController
+    	// TODO: 4. Initialize Spring ApplicationContext and call DeepThoughtController.ermittleDieAntwort();
     	
     	Antwort antwort = new Antwort();
         

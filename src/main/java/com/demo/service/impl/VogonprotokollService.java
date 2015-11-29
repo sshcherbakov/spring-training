@@ -9,7 +9,7 @@ import com.demo.service.IVogonprotokollService;
 public class VogonprotokollService implements IVogonprotokollService {
 	private static Logger log = LoggerFactory.getLogger(VogonprotokollService.class);
 
-	// TODO: inject a IVogonprotokollRepository instance
+	// TODO: 3. Inject a IVogonprotokollRepository instance via a setter
 	private IVogonprotokollRepository myVogonprotokollRepository;
 
 

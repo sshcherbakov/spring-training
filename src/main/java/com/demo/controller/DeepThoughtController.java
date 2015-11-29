@@ -11,10 +11,10 @@ import com.demo.service.IVogonprotokollService;
 public class DeepThoughtController {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtController.class);
 
-	// TODO: Autowire the instance
+	// TODO: 2. Inject a IDeepThoughtService instance
 	private IDeepThoughtService deepThoughtService;
 
-	// TODO: Autowire the instance
+	// TODO: 2. Inject a IVogonprotokollService instance
 	private IVogonprotokollService vogonprotokollService;
 
 	
