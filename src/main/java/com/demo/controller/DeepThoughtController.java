@@ -9,7 +9,7 @@ import com.demo.model.Antwort;
 import com.demo.service.IDeepThoughtService;
 import com.demo.service.IVogonprotokollService;
 
-//TODO: Add @Controller
+// TODO: 1. Add @Controller annotation
 public class DeepThoughtController {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtController.class);
 	

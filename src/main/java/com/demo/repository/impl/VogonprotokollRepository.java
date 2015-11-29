@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.demo.repository.IVogonprotokollRepository;
 
-// TODO Add @Repository
+// TODO: 1. Add @Repository annotation
 public class VogonprotokollRepository implements IVogonprotokollRepository {
 	private static Logger log = LoggerFactory.getLogger(VogonprotokollRepository.class);
 

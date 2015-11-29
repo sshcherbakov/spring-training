@@ -3,14 +3,13 @@ package com.demo.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.demo.model.Antwort;
 import com.demo.repository.IDeepThoughtRepository;
 import com.demo.service.IDeepThoughtService;
 
 
-//TODO: Add @Service
+// TODO: 1. Add @Service annotation
 public class DeepThoughtService implements IDeepThoughtService {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtService.class);
 

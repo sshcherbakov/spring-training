@@ -10,7 +10,7 @@ import com.demo.model.Antwort;
 import com.demo.repository.IDeepThoughtRepository;
 import com.demo.service.IIdService;
 
-// TODO Add @Repository
+// TODO: 1. Add @Repository annotation
 public class DeepThoughtRepository implements IDeepThoughtRepository {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtRepository.class);
 

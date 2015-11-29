@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.demo.service.IIdService;
 
-// TODO: Add @Service
+// TODO: 1. Add @Service annotation
 public class IdService implements IIdService, SmartLifecycle {
 	private static Logger log = LoggerFactory.getLogger(IdService.class);
 

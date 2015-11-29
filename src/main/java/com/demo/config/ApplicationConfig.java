@@ -43,7 +43,7 @@ public class ApplicationConfig {
 	}
 	
 	
-	// TODO: Remove all business bean definitions below
+	// TODO: 2. Remove all business bean definitions below
 
 	@Bean
 	public DeepThoughtController deepThoughtController() {
