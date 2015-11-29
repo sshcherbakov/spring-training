@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MetricsPointcuts {
 	
-	// TODO Named pointcut for reuse (see MetricsAdvice)
-	// TODO Change to cover repositories only
+	// TODO: 4. Change to cover repositories only
+	// Named pointcut for reuse (see MetricsAdvice)
 	@Pointcut("execution(* (@org.springframework.stereotype.Service com.demo..*).*(..))")
 	public void serviceCalls() {
 	}

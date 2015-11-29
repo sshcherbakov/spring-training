@@ -16,8 +16,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Configuration
 public class ApplicationConfig {
 	
-	// TODO: Without Spring Boot the PropertySourcesPlaceholderConfigurer is needed for placeholder resolution in @Value
-	// TODO: Note static modifier! Required for BeanFactoryPostProcessor beans 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() 
 			throws IOException {

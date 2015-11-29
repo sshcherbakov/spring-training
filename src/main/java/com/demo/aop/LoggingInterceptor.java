@@ -8,7 +8,7 @@ import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-// TODO: Not an AspectJ aspect but acts similar when using in Spring proxies 
+// TODO: 2. Interceptor is not an AspectJ aspect but acts similar when used in Spring proxies 
 @Profile("debug")
 @Component
 public class LoggingInterceptor implements MethodBeforeAdvice {
