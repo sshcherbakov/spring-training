@@ -36,12 +36,11 @@ public class ApplicationTests {
 	// TODO: 7. Rely on not dirtying the context
 	// @DirtiesContext
 	// @Sql("schema.sql")
-	//@Sql
-	//@Test
+	// @Sql
+	// @Test
 	public void testErmittleDieAntwort2() {
 		log.info("testErmittleDieAntwort2()");
 		
-		// TODO: 5. compare DeepThoughtController answer with "Test"
 		//assertEquals("Test", controller.ermittleDieAntwort().getAntwort());
 	}
 
