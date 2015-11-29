@@ -10,7 +10,7 @@ import com.demo.service.IVogonprotokollService;
 public class VogonprotokollService implements IVogonprotokollService {
 	private static Logger log = LoggerFactory.getLogger(VogonprotokollService.class);
 
-	// TODO: Try the property name matching the configuration bean name
+	// TODO: 2. Try the property name matching the configuration bean name
 	@Autowired
 	private IVogonprotokollRepository myVogonprotokollRepository;
 

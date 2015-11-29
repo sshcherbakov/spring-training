@@ -35,22 +35,27 @@ public class ApplicationConfig {
 	public IDeepThoughtService deepThoughtService(IDeepThoughtRepository deepThoughtRepository) {
 		return new DeepThoughtService(deepThoughtRepository);
 	}
-	
-	@Bean
-	public IVogonprotokollRepository vogonprotokollRepository() {
-		return new VogonprotokollRepository();
-	}
 
-	// TODO Try double vogonprotokollRepository beans error and autowire by bean name 
-	// TODO Demo @Primary and @Qulifier annotation
-	
 	@Bean
 	public IVogonprotokollService vogonprotokollService() {
 		return new VogonprotokollService();
 	}
+
+	// TODO: 2. Try double vogonprotokollRepository beans error and autowire by bean name 
+	// TODO: 3. Demo @Primary and @Qulifier annotation
+
+	@Bean
+	public IVogonprotokollRepository vogonprotokollRepository() {
+		return new VogonprotokollRepository();
+	}
+	
+//	@Bean
+//	public IVogonprotokollRepository vogonprotokollRepository2() {
+//		return new VogonprotokollRepository();
+//	}
 	
 	
-	// TODO Database configuration to separate 
+	// TODO: 1. Move database configuration to a separate configuration file 
 	
 	@Bean
 	public DataSource dataSource() {
