@@ -3,7 +3,6 @@ package com.demo.game.service.internal;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -24,7 +23,6 @@ import com.demo.game.service.api.GameService;
 
 @Service
 @Monitored
-@Transactional
 @CacheConfig(cacheManager="cacheManager", cacheNames="games")
 public class GameServiceImpl implements GameService {
 

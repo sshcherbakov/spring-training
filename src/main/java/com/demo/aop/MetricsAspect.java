@@ -5,20 +5,13 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StopWatch;
-
-import com.demo.messaging.MessageSender;
 
 @Aspect
 public class MetricsAspect {
 	private static Logger log = LoggerFactory.getLogger(MetricsAspect.class);
 
-	
-	@Autowired
-	private MessageSender messageSender;
-	
-	
+		
 	@Around("com.demo.aop.MetricsPointcuts.serviceCalls()")
 	public Object metrics(ProceedingJoinPoint point)  throws Throwable {
 	
@@ -32,16 +25,8 @@ public class MetricsAspect {
 		finally {
 			timer.stop();
 			log.info(timer.prettyPrint());
-			
-			messageSender.send(timer.shortSummary());
-
 		}
 		
-	}
-	
-	// Setter for construction from JUnit tests
-	public void setMessageSender(MessageSender messageSender) {
-		this.messageSender = messageSender;
 	}
 	
 }
