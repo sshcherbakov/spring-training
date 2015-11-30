@@ -1,11 +1,14 @@
 package com.demo.repository.impl;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import com.demo.model.Antwort;
 import com.demo.repository.IDeepThoughtRepository;
@@ -35,12 +38,17 @@ public class DeepThoughtRepository implements IDeepThoughtRepository {
 
 		 return jdbcTemplate.queryForObject(
 			"select val from ANTWORT where id = " + getRandomId(), 
-			(rowMapper, rowNum) -> {
+			new RowMapper<Antwort>() {
+
+				@Override
+				public Antwort mapRow(ResultSet rs, int rowNum) throws SQLException {
+					
+					Antwort antwort = new Antwort(rs.getString("val"));
+					antwort.setAnfragesteller(String.format("%s:%s", applicationName, applicationIndex));
+					
+					return antwort;
+				}
 				
-				Antwort antwort = new Antwort(rowMapper.getString("val"));
-				antwort.setAnfragesteller(String.format("%s:%s", applicationName, applicationIndex));
-				
-				return antwort;
 			}
 		);
 
