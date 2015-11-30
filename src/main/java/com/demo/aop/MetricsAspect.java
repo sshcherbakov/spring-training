@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Profile("debug")
 @Component
-public class MetricsAdvice {
-	private static Logger log = LoggerFactory.getLogger(MetricsAdvice.class);
+public class MetricsAspect {
+	private static Logger log = LoggerFactory.getLogger(MetricsAspect.class);
 	
 	// TODO: 3. Uncomment the around advice to add cross-cutting concern
 	
