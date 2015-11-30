@@ -20,48 +20,11 @@ public class AmqpConfig {
 	@Value("${rabbit.exchangeName:metricsExchange}")
 	private String rabbitExchangeName = "metricsExchange";
 	
-//	@Value("${rabbit.durable:true}")
-//	private boolean isRabbitDurable = true;
-//		
-//	@Value("${rabbit.autodelete:false}")
-//	private boolean isRabbitAutoDelete = false;
-
-	
-//	@Bean
-//	public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
-//		if( connectionFactory == null ) {
-//			return null;
-//		}
-//		RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
-//		rabbitAdmin.setIgnoreDeclarationExceptions(true);
-//		return rabbitAdmin;
-//	}
-
-//	@Bean
-//	public AbstractExchange testExchange() {
-//	    return new FanoutExchange(rabbitExchangeName, isRabbitDurable, isRabbitAutoDelete);
-//	}
-	
-//	@Bean
-//	public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-//		if( connectionFactory == null ) {
-//			return new RabbitTemplate() {
-//				@Override
-//				public void afterPropertiesSet() {
-//				}
-//				
-//			};
-//		}
-//		RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-//		return rabbitTemplate;
-//	}
-
-	
 	@Bean
 	public MessageSender amqpMessageSender(RabbitTemplate rabbitTemplate) {
 		return s -> {
 			log.debug("Sending {} to exchange {}", s, rabbitExchangeName);
-			rabbitTemplate.convertAndSend(rabbitExchangeName, "", s); 
+			// TODO: 7. Alternative AMQP MessageSender
 		};
 	}
 	

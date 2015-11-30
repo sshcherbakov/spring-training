@@ -19,15 +19,15 @@ import com.demo.messaging.MessageSender;
 @ConditionalOnMissingBean({ RabbitTemplate.class })
 @Profile("!cloud")
 
-//TODO: Enable JMS here for the @JmsListener endpoint to be recognized and for 
-//the Spring Boot to start the embedded ActiveMQ
-@EnableJms
+// TODO: 1. Add JMS dependencies to the pom.xml
+// TODO: 2. Enable JMS processing for the @JmsListener endpoint to be recognized and for 
+// 		the Spring Boot to start the embedded ActiveMQ
 @Configuration
 public class JmsConfig {
 
 	public final static String METRICS_DESTINATION = "metrics-destination"; 
 
-// TODO: Optional JMS connectionFactory customization 
+// TODO: 5. Optional JMS connectionFactory customization 
 //		(a connection factory is provided by Spring Boot by default)
 //@Bean
 //JmsListenerContainerFactory<?> myJmsContainerFactory(ConnectionFactory connectionFactory) {
@@ -40,13 +40,7 @@ public class JmsConfig {
 	@Bean
 	public MessageSender jmsMessageSender(JmsTemplate jmsTemplate) {
 		return s -> { 
-			jmsTemplate.send(METRICS_DESTINATION,
-					new MessageCreator() {
-						@Override
-						public Message createMessage(Session session) throws JMSException {
-							return session.createTextMessage(s);
-						}
-					});
+			// TODO: 4. Send metrics message
 		};
 	}
 

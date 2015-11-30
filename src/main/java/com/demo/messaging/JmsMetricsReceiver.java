@@ -9,11 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Profile;
-import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileSystemUtils;
-
-import com.demo.config.JmsConfig;
 
 @ConditionalOnMissingBean({ RabbitTemplate.class })
 @Profile("!cloud")
@@ -21,8 +18,7 @@ import com.demo.config.JmsConfig;
 public class JmsMetricsReceiver {
 	private static Logger log = LoggerFactory.getLogger(JmsMetricsReceiver.class);
 
-	
-    @JmsListener(destination = JmsConfig.METRICS_DESTINATION)
+	// TODO: 6. JMS Receiver implementation
     public void receiveMessage(String message) {
     	log.info("Received <{}>", message);
     }

@@ -33,8 +33,7 @@ public class MetricsAspect {
 			timer.stop();
 			log.info(timer.prettyPrint());
 			
-			messageSender.send(timer.shortSummary());
-
+			// TODO: 4. Send metrics message
 		}
 		
 	}

@@ -15,7 +15,9 @@ import org.springframework.stereotype.Component;
 public class AmqpMetricsReceiver {
 	private static Logger log = LoggerFactory.getLogger(AmqpMetricsReceiver.class);
 
-	
+
+	// TODO: 8. Alternative AMQP message receiver
+
     @RabbitListener(exclusive=true, bindings={
     @QueueBinding(
 	    		exchange=@Exchange(
