@@ -14,7 +14,6 @@ import com.demo.messaging.MessageSender;
 public class SpringTrainingApplication {
 	
 	
-	// TODO: Autowire MetricsAdvice with JmsTemplate
 	@Bean
 	public MetricsAspect metricsAdvice(MessageSender messageSender) {
 		if( Aspects.hasAspect(MetricsAspect.class)) {

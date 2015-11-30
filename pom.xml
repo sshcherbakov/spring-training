@@ -6,6 +6,8 @@
 	<groupId>com.demo</groupId>
 	<artifactId>spring-training</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<!-- TODO: 1. Change packaging to war -->
+	<!-- <packaging>war</packaging> -->
 	<packaging>jar</packaging>
 
 	<name>spring-training</name>
@@ -34,6 +36,8 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- TODO: 1. Add provided scope for Web server dependencies -->
+			<!-- <scope>provided</scope> -->
 		</dependency>
 
 		<!-- AOP -->
