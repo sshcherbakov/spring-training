@@ -1,15 +1,16 @@
 package com.demo.deepthought.repository;
 
-import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
-
 import org.springframework.data.repository.Repository;
 
 import com.demo.deepthought.model.Antwort;
 
-@Transactional(TxType.MANDATORY)
+// TODO: 1. Implement a Spring Data IDeepThoughtRepository repository
+// 			- extend the Repository interface
+//			- add findOne() form the CrudRepository interface
 public interface IDeepThoughtRepository extends Repository<Antwort, Long> {
 
 	Antwort findOne(Long id);
 
+	Antwort findByAntwort(String antwort);
+	
 }

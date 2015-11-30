@@ -23,22 +23,18 @@ import com.demo.deepthought.service.api.IDeepThoughtService;
 public class DeepThoughtService implements IDeepThoughtService, SmartLifecycle {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtService.class);
 
-	private final IDeepThoughtRepository deepThoughtRepository;
+	@Autowired
+	private IDeepThoughtRepository deepThoughtRepository;
 
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	private List<Long> ids;
+	private List<Long> ids = new ArrayList<>();
 
 	private boolean isRunning = false;
 
 	
-	@Autowired
-	public DeepThoughtService(final IDeepThoughtRepository deepThoughtRepository) {
-		this.deepThoughtRepository = deepThoughtRepository;
-		this.ids = new ArrayList<>();
-	}
-
 	
 	@Monitored
 	@Override
