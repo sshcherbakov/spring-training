@@ -2,9 +2,9 @@ package com.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 
-@EnableCaching
+// TODO: 3. Enable processing of caching annotations
+// @EnableCaching
 @SpringBootApplication
 public class SpringTrainingApplication {
 	

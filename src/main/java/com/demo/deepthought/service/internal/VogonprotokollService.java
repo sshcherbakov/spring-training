@@ -1,12 +1,15 @@
 package com.demo.deepthought.service.internal;
 
+import java.util.Date;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demo.aop.Monitored;
-import com.demo.deepthought.model.Antwort;
+import com.demo.deepthought.model.Protokoll;
 import com.demo.deepthought.repository.IVogonprotokollRepository;
 import com.demo.deepthought.service.api.IVogonprotokollService;
 
@@ -20,15 +23,21 @@ public class VogonprotokollService implements IVogonprotokollService {
 
 	@Monitored
 	@Override
-	public void schreibeSitzungsprotokoll(Long id) {
+	public void schreibeSitzungsprotokoll(String antwort, String anfragesteller) {
 		log.debug("schreibeSitzungsprotokoll()");
 
-		Antwort antwort = this.myVogonprotokollRepository.findOne(id);
-		if (antwort == null) {
-			antwort = new Antwort();
-		}
+		Protokoll protokoll = new Protokoll();
+		protokoll.setAntwort(antwort);
+		protokoll.setAnfragesteller(anfragesteller);
+		protokoll.setTimestamp(new Date());
 
-		antwort = this.myVogonprotokollRepository.save(antwort);
+		this.myVogonprotokollRepository.save(protokoll);
+	}
+
+
+	@Override
+	public List<Protokoll> ermittleProtokoll(String anfragesteller) {
+		return myVogonprotokollRepository.findByAnfragesteller(anfragesteller);
 	}
 
 }
