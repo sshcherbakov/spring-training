@@ -3,6 +3,8 @@ package com.demo.deepthought.service.internal;
 import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import com.demo.deepthought.repository.IVogonprotokollRepository;
 import com.demo.deepthought.service.api.IVogonprotokollService;
 
 @Service
+@Transactional
 public class VogonprotokollService implements IVogonprotokollService {
 	private static Logger log = LoggerFactory.getLogger(VogonprotokollService.class);
 
