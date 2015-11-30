@@ -5,10 +5,6 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,7 +19,7 @@ import com.demo.game.service.api.GameService;
 
 @Service
 @Monitored
-@CacheConfig(cacheManager="cacheManager", cacheNames="games")
+//TODO: C2. Configure @CacheConfig with cacheManager and Cache name "games"
 public class GameServiceImpl implements GameService {
 
 	private static final String DEFAULT_POSITION = "e4";
@@ -50,7 +46,7 @@ public class GameServiceImpl implements GameService {
 	}
 
 
-	@CachePut(key="#gameId")
+	// TODO C3: Populate cache on write by gameId 
 	@Override
 	public Game joinGame(long gameId, String playerName) {
 		
@@ -74,7 +70,7 @@ public class GameServiceImpl implements GameService {
 	}
 	
 	
-	@Cacheable
+	// TODO C4: Make method Cacheable
 	@Override
 	public Game getGame(long gameId) {
 		return gameRepository.findOne(gameId);
@@ -97,7 +93,7 @@ public class GameServiceImpl implements GameService {
 	}
 
 
-	@CacheEvict(key="#gameId")
+	// TODO C5: Invalidate Cache by gameId key 
 	@Override
 	public Game moveUp(long gameId, String playerName) {
 		
@@ -114,7 +110,7 @@ public class GameServiceImpl implements GameService {
 	}
 	
 
-	@CacheEvict(key="#gameId")
+	// TODO C6: Invalidate Cache by gameId key 
 	@Override
 	public Game moveDown(long gameId, String playerName) {
 		Position pos = positionRepository.findFirstByGameIdAndPlayer(gameId, playerName);
@@ -130,7 +126,7 @@ public class GameServiceImpl implements GameService {
 	}
 
 
-	@CacheEvict(key="#gameId")
+	// TODO C7: Invalidate Cache by gameId key 
 	@Override
 	public Game moveRight(long gameId, String playerName) {
 		Position pos = positionRepository.findFirstByGameIdAndPlayer(gameId, playerName);
@@ -146,7 +142,7 @@ public class GameServiceImpl implements GameService {
 	}
 
 
-	@CacheEvict(key="#gameId")
+	// TODO C8: Invalidate Cache by gameId key 
 	@Override
 	public Game moveLeft(long gameId, String playerName) {
 		Position pos = positionRepository.findFirstByGameIdAndPlayer(gameId, playerName);
@@ -177,6 +173,7 @@ public class GameServiceImpl implements GameService {
 	}
 
 
+	// TODO C9: Invalidate Cache by gameId key 
 	@Override
 	public void deleteGame(long gameId) {
 		gameRepository.delete(gameId);

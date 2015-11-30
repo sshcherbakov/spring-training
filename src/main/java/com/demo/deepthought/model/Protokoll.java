@@ -2,18 +2,11 @@ package com.demo.deepthought.model;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-import org.springframework.data.jpa.domain.AbstractPersistable;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity
-@Table(name="t_protokoll")
-public class Protokoll extends AbstractPersistable<Long> {
-	
-	private static final long serialVersionUID = 1L;
+// TODO: D1. Mark JPA entity
+// 		and implement convenience Spring Data AbstractPersistable 
+public class Protokoll {
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm a z")
 	private Date timestamp;

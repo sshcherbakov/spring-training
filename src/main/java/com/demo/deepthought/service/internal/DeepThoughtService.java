@@ -23,7 +23,7 @@ import com.demo.deepthought.service.api.IDeepThoughtService;
 public class DeepThoughtService implements IDeepThoughtService, SmartLifecycle {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtService.class);
 
-	@Autowired
+	// TODO: D7. Inject IDeepThoughtRepository
 	private IDeepThoughtRepository deepThoughtRepository;
 
 	
@@ -41,8 +41,8 @@ public class DeepThoughtService implements IDeepThoughtService, SmartLifecycle {
 	public Antwort ermittleDieAntwort() {
 		log.debug("ermittleDieAntwort()");
 		
-		return this.deepThoughtRepository.findOne(getRandomId());
-	
+		// TODO: D8. Get random Antwort from the database here
+		return null;
 	}
 
 		
