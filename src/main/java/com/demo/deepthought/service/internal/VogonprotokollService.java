@@ -1,11 +1,11 @@
 package com.demo.deepthought.service.internal;
 
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demo.aop.Monitored;
@@ -14,10 +14,11 @@ import com.demo.deepthought.repository.IVogonprotokollRepository;
 import com.demo.deepthought.service.api.IVogonprotokollService;
 
 @Service
+//TODO: 1. Make Service transactional
 public class VogonprotokollService implements IVogonprotokollService {
 	private static Logger log = LoggerFactory.getLogger(VogonprotokollService.class);
 
-	// TODO: D4. Inject IVogonprotokollRepository
+	@Autowired
 	private IVogonprotokollRepository myVogonprotokollRepository;
 
 
@@ -31,15 +32,14 @@ public class VogonprotokollService implements IVogonprotokollService {
 		protokoll.setAnfragesteller(anfragesteller);
 		protokoll.setTimestamp(new Date());
 
-		// TODO: D5. Save Protokoll to the database
+		myVogonprotokollRepository.save(protokoll);
 	}
 
 
 	@Override
 	public List<Protokoll> ermittleProtokoll(String anfragesteller) {
 		
-		// TODO: D6. Find Protokoll by anfragesteller field
-		return Collections.emptyList();
+		return myVogonprotokollRepository.findByAnfragesteller(anfragesteller);
 	}
 
 }

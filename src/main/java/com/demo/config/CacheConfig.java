@@ -12,7 +12,6 @@ import com.gemstone.gemfire.cache.Cache;
 import com.gemstone.gemfire.cache.client.ClientCache;
 import com.gemstone.gemfire.cache.client.ClientRegionShortcut;
 
-// TODO: 11. Add "cloud" profile to make use of Cloud Foundry caching service in PCF environment
 @Profile("cloud")
 @EnableGemfireRepositories
 @Configuration

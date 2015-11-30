@@ -1,11 +1,14 @@
 package com.demo.deepthought.repository;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-//TODO: D3. Implement a Spring Data IVogonprotokollRepository as CRUD repository
-//			- extend the CrudRepository interface
-// 			- add findByAnfragesteller() query method
-@Repository
-public interface IVogonprotokollRepository  {
+import org.springframework.data.repository.CrudRepository;
+
+import com.demo.deepthought.model.Protokoll;
+
+//TODO: 2. Require transaction context presence
+public interface IVogonprotokollRepository extends CrudRepository<Protokoll, Long> {
+	
+	List<Protokoll> findByAnfragesteller(String anfragesteller);
 	
 }

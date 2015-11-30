@@ -2,11 +2,9 @@ package com.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
-// TODO: C1. Enable processing of caching annotations
-// TODO: C10. Switch to Guava cache in the pom.xml
-// @EnableCaching
-// @EnableJpaRepositories 		<-- for a non-Spring Boot application
+@EnableCaching
 @SpringBootApplication
 public class SpringTrainingApplication {
 	

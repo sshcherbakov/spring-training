@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.transaction.Transactional;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +17,11 @@ import com.demo.deepthought.repository.IDeepThoughtRepository;
 import com.demo.deepthought.service.api.IDeepThoughtService;
 
 @Service
-@Transactional
+//TODO: 1. Make Service transactional
 public class DeepThoughtService implements IDeepThoughtService, SmartLifecycle {
 	private static Logger log = LoggerFactory.getLogger(DeepThoughtService.class);
 
-	// TODO: D7. Inject IDeepThoughtRepository
+	@Autowired
 	private IDeepThoughtRepository deepThoughtRepository;
 
 	
@@ -41,8 +39,7 @@ public class DeepThoughtService implements IDeepThoughtService, SmartLifecycle {
 	public Antwort ermittleDieAntwort() {
 		log.debug("ermittleDieAntwort()");
 		
-		// TODO: D8. Get random Antwort from the database here
-		return null;
+		return this.deepThoughtRepository.findOne(getRandomId());
 	}
 
 		
