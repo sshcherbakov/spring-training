@@ -27,15 +27,20 @@ public class JmsConfig {
 
 
 	@Bean
-	public MessageSender jmsMessageSender(JmsTemplate jmsTemplate) {
-		return s -> { 
-			jmsTemplate.send(METRICS_DESTINATION,
-					new MessageCreator() {
-						@Override
-						public Message createMessage(Session session) throws JMSException {
-							return session.createTextMessage(s);
-						}
-					});
+	public MessageSender jmsMessageSender(final JmsTemplate jmsTemplate) {
+		return new MessageSender() {
+
+			@Override
+			public void send(final String message) {
+				jmsTemplate.send(METRICS_DESTINATION,
+						new MessageCreator() {
+							@Override
+							public Message createMessage(Session session) throws JMSException {
+								return session.createTextMessage(message);
+							}
+						});
+			}
+			
 		};
 	}
 
