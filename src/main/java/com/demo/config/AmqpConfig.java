@@ -22,9 +22,13 @@ public class AmqpConfig {
 	
 	@Bean
 	public MessageSender amqpMessageSender(RabbitTemplate rabbitTemplate) {
-		return s -> {
-			log.debug("Sending {} to exchange {}", s, rabbitExchangeName);
-			// TODO: 7. Alternative AMQP MessageSender
+		return new MessageSender() {
+			@Override
+			public void send(String message) {
+				log.debug("Sending {} to exchange {}", message, rabbitExchangeName);
+				// TODO: 7. Alternative AMQP MessageSender
+				
+			}
 		};
 	}
 	
