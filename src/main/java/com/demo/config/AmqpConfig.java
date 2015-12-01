@@ -58,10 +58,15 @@ public class AmqpConfig {
 
 	
 	@Bean
-	public MessageSender amqpMessageSender(RabbitTemplate rabbitTemplate) {
-		return s -> {
-			log.debug("Sending {} to exchange {}", s, rabbitExchangeName);
-			rabbitTemplate.convertAndSend(rabbitExchangeName, "", s); 
+	public MessageSender amqpMessageSender(final RabbitTemplate rabbitTemplate) {
+		return new MessageSender() {
+
+			@Override
+			public void send(String message) {
+				log.debug("Sending {} to exchange {}", message, rabbitExchangeName);
+				rabbitTemplate.convertAndSend(rabbitExchangeName, "", message); 
+			}
+			
 		};
 	}
 	
