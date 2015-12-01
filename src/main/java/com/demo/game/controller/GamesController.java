@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.game.model.Game;
-import com.demo.game.model.Move;
-import com.demo.game.service.api.GameException;
 import com.demo.game.service.api.GameService;
 
 @RestController
@@ -50,24 +48,13 @@ public class GamesController {
 	public Game moveJoin(
 			@PathVariable("gameId") long gameId, 
 			@RequestParam("p") String playerName,
-			@RequestParam(name="m", required=false) Move move ) {
+			@RequestParam(name="m", required=false) String position ) {
 		
-		if( move == null ) {
+		if( position == null ) {
 			return gameService.joinGame(gameId, playerName);
 		}
 		
-		switch(move) {
-		case UP:
-			return gameService.moveUp(gameId, playerName);
-		case DOWN:
-			return gameService.moveDown(gameId, playerName);
-		case RIGHT:
-			return gameService.moveRight(gameId, playerName);
-		case LEFT:
-			return gameService.moveLeft(gameId, playerName);
-		default:
-			throw new GameException("Unknown move");
-		}
+		return gameService.makeMove(gameId, playerName, position);
 
 	}
 	

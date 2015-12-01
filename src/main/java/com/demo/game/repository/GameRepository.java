@@ -11,7 +11,7 @@ import com.demo.game.model.Game;
 @Transactional(TxType.MANDATORY)
 public interface GameRepository extends CrudRepository<Game, Long> {
 
-	@Query("select g FROM Game g left join fetch g.positions")
+	@Query("select distinct g FROM Game g left join fetch g.positions")
 	Iterable<Game> findAll();
 	
 }

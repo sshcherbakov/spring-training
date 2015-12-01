@@ -11,6 +11,7 @@ public interface GameService {
 	Game joinGame(long gameId, String playerName);
 	void deleteGame(long gameId);
 
+	Game makeMove(long gameId, String playerName, String newPos);
 	Game moveUp(long gameId, String playerName);
 	Game moveDown(long gameId, String playerName);
 	Game moveRight(long gameId, String playerName);

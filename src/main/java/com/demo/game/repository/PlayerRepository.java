@@ -5,13 +5,11 @@ import javax.transaction.Transactional.TxType;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.demo.game.model.Position;
+import com.demo.game.model.Player;
 
 @Transactional(TxType.MANDATORY)
-public interface PositionRepository extends JpaRepository<Position, Long> {
+public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-	Position findFirstByGameIdAndPlayerName(Long gameId, String player);
-
-	Iterable<Position> findByGameId(Long gameId);
+	Player findFirstByName(String player);
 	
 }

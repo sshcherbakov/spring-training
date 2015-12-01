@@ -1,31 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>spring-training</title>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="start-style.css" />
 </head>
 <body>
 <h3>Games</h3>
+<input id="player_name" type="text" value="player1" />
+<input id="btn_start" type="button" value="start new" />
+<div id="games_list">
+</div>
 
 <script src="scripts/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" >
-$.ajax({
-    url: '/games',
-    type: 'GET',
-    data: 'p=user', 
-    success: function( data ) { 
-		var items = [];
-		$.each(data, function(key, val) {
-			items.push("<li id='g" + val.id + "'><a href='/games/"+ val.id +"'>/games/" + val.id + "</a></li>");
-		});
-	
-		$("<ul/>", {
-			"class" : "my-new-list",
-			html : items.join("")
-		}).appendTo("body");
 
-	}
+function refresh() {
+	$.ajax({
+	    url: '/games',
+	    type: 'GET',
+	    success: function( data ) { 
+			var items = [];
+			$.each(data, function(key, val) {
+				items.push("<li id='g" + val.id + "'><a class='game_link' href='/board.html?g="+ val.id +"'>/games/" + val.id + "</a></li>");
+			});
+		
+			$("<ul/>", {
+				html : items.join("")
+			}).appendTo("#games_list");
+	
+		    $(".game_link").click(function(){
+		    	var h = $(this).attr("href");
+		        $(this).attr("href", h + '&p=' + $("#player_name").val());
+		    });
+
+		}
+	});
+}
+
+$(document).ready(function() {
+	
+	$('#btn_start').click(function() {
+
+		$("#games_list").html("");
+		
+		$.ajax({
+		    url: '/games',
+		    type: 'POST',
+		    data: 'p=' + $("#player_name").val(), 
+		    success: function( data ) { 
+				refresh();		
+			}
+		});
+		return false;
+	});
+	
+	refresh();
+	
 });
+
 </script>
 </body>
 </html>
