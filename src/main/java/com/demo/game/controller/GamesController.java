@@ -1,6 +1,7 @@
 package com.demo.game.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,9 @@ public class GamesController {
 	@Autowired
 	private GameService gameService;
 
+    @Autowired
+    private CounterService counterService;
+
 
 	@RequestMapping(method=RequestMethod.GET)
 	public Iterable<Game> listGames() {
@@ -28,7 +32,9 @@ public class GamesController {
 	@RequestMapping(method=RequestMethod.POST)
 	public Game createGame(@RequestParam("p") String playerName) {
 		
+		this.counterService.increment("com.demo.gamecontroller.invoked");
 		return gameService.startGame(playerName);
+        
 	}
 
 	
@@ -57,6 +63,5 @@ public class GamesController {
 		return gameService.makeMove(gameId, playerName, position);
 
 	}
-	
-	
+	    
 }
