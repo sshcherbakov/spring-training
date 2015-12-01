@@ -2,6 +2,8 @@ package com.demo;
 
 import org.aspectj.lang.Aspects;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -11,8 +13,14 @@ import com.demo.messaging.MessageSender;
 
 @EnableCaching
 @SpringBootApplication
-public class SpringTrainingApplication {
-	
+public class SpringTrainingApplication implements HealthIndicator {
+
+	// TODO: 3. Implement Spring Boot HealthIndicator
+	@Override
+	public Health health() {
+		return Health.up().withDetail("hello", "world").build();
+	}
+
 	
 	@Bean
 	public MetricsAspect metricsAdvice(MessageSender messageSender) {
