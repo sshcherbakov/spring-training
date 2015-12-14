@@ -20,5 +20,6 @@ public class ApplicationTests {
 	@Test
 	public void contextLoads() {
 		log.info("TEST");
+		service.listGames();
 	}
 }
